@@ -10,42 +10,42 @@
 
 
 
-// understanding problem
-/*
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+// // understanding problem
+// import React from 'react'
+// import ReactDOM from 'react-dom/client'
+// import App from './App.jsx'
 
 
-function MyApp(){
-  return(
-    <div>
-      <h1>Custom Vite React !!</h1>
-    </div>
-  )
-}
+// function MyApp(){
+//   return(
+//     <div>
+//       <h1>Custom Vite React !!</h1>
+//     </div>
+//   )
+// }
 
-const ReactElement = {
-  type: "a",
-  props: {
-    href: "https://google.com",
-    target: "_blank",
-  },
-  children: "Click me to visit google",
-};
+// const ReactElement = {
+//   type: "a",
+//   props: {
+//     href: "https://google.com",
+//     target: "_blank",
+//   },
+//   children: "Click me to visit google",
+// };
 
-const anotherElement = (
-  <a href='https://google.com' target='_blank'>Visit Google</a>
-)
+// const anotherElement = (
+//   <a href='https://google.com' target='_blank'>Visit Google</a>
+// )
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  // <MyApp />
+// ReactDOM.createRoot(document.getElementById('root')).render(
+  
+//   // <MyApp /> // works
+//   // MyApp() // works becuase MyApp is a function
 
-  // ReactElement
+//   // ReactElement // doesnt works
 
-  anotherElement
-)
-*/
+//   // anotherElement // works
+// )
 
 // Solution to the problem
 import React from 'react'
@@ -61,23 +61,24 @@ function MyApp(){
   )
 }
 
-// // dont works
-// const ReactElement = {
-//   type: "a",
-//   props: {
-//     href: "https://google.com",
-//     target: "_blank",
-//   },
-//   children: "Click me to visit google",
-// };
+// dont works, because doesnt expects the format
+const ReactElement = {
+  type: "a",
+  props: {
+    href: "https://google.com",
+    target: "_blank",
+  },
+  children: "Click me to visit google",
+};
 
-// // works, but not that proefficient
-// const anotherElement = (
-//   <a href='https://google.com' target='_blank'>Visit Google</a>
-// )
+// works, but not that proefficient
+const anotherElement = (
+  <a href='https://google.com' target='_blank'>Visit Google</a>
+)
 
 // the correct way how react converts to dom element, Correct
 let anotherUser = 'Chai Aur React !'
+
 const reactElement = React.createElement(
   'a',
   {href: "https://google.com", target: '_blank'},
@@ -86,5 +87,8 @@ const reactElement = React.createElement(
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  reactElement
+  // reactElement // dont works
+  // anotherElement //  works
+
+  // reactElement //  the correct way works
 )
